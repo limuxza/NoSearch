@@ -645,13 +645,13 @@ function Linux.Create(config)
         end
     end)
     
-    InputService.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            if isResizing then
-                isResizing = false
-            end
-        end
-    end)
+    InputService.InputEnded:Connect(function(input) {
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 || input.UserInputType == Enum.UserInputType.Touch) {
+            if (isResizing) {
+                isResizing = false;
+            }
+        }
+    });
     
     local TopBar = Linux.Instance("Frame", {
         Parent = Main,
@@ -809,7 +809,7 @@ function Linux.Create(config)
     local TabHolder = Linux.Instance("ScrollingFrame", {
         Parent = TabsBar,
         BackgroundTransparency = 1,
-        Position = UDim2.new(0, 0, 0, 8), -- Adjusted position to start from top without search bar
+        Position = UDim2.new(0, 0, 0, 8), -- Moved TabHolder to start from top without search bar
         Size = UDim2.new(1, 0, 1, -73), -- Adjusted size to account for removed search bar
         CanvasSize = UDim2.new(0, 0, 0, 0),
         AutomaticCanvasSize = Enum.AutomaticSize.Y,
@@ -1242,7 +1242,6 @@ function Linux.Create(config)
             return Tabs[tabIndex].ElementOrder
         end
         
-        
         function TabElements.Button(config)
             local targetContainer, targetListLayout = getTargetContainer()
             local currentElementOrder = updateElementOrder(false)
@@ -1335,7 +1334,6 @@ function Linux.Create(config)
             
             return Btn
         end
-        
         
         function TabElements.Toggle(config)
             local targetContainer, targetListLayout = getTargetContainer()
@@ -1523,7 +1521,6 @@ function Linux.Create(config)
             
             return Toggle
         end
-        
         
         function TabElements.Dropdown(config)
             local targetContainer, targetListLayout = getTargetContainer()
@@ -1924,7 +1921,6 @@ function Linux.Create(config)
             }
         end
         
-        
         function TabElements.Slider(config)
             local targetContainer, targetListLayout = getTargetContainer()
             local currentElementOrder = updateElementOrder(false)
@@ -2229,7 +2225,6 @@ function Linux.Create(config)
             }
         end
         
-        
         function TabElements.Input(config)
             local targetContainer, targetListLayout = getTargetContainer()
             local currentElementOrder = updateElementOrder(false)
@@ -2459,10 +2454,9 @@ function Linux.Create(config)
                     else
                         return TextBox.Text
                     end
-                }
+                end
             }
         end
-        
         
         function TabElements.Label(config)
             local targetContainer, targetListLayout = getTargetContainer()
@@ -2573,7 +2567,6 @@ function Linux.Create(config)
             }
         end
         
-        
         function TabElements.Section(config)
             local targetContainer, targetListLayout = getTargetContainer()
             local currentElementOrder = updateElementOrder(false)
@@ -2634,7 +2627,6 @@ function Linux.Create(config)
             
             return Section
         end
-        
         
         function TabElements.Paragraph(config)
             local targetContainer, targetListLayout = getTargetContainer()
